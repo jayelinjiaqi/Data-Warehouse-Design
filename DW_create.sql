@@ -1,0 +1,66 @@
+-- IT8704 Data Management Systems CA2
+-- JAYE LIN JIAQI (9707406Q)
+-- SQL CREATE TABLE statements to create DW tables
+
+CREATE DATABASE CA2DW9707406;
+USE CA2DW9707406;
+
+CREATE TABLE DimDepartment(
+DepartmentKey INT PRIMARY KEY AUTO_INCREMENT,
+DepartmentID VARCHAR(10) NOT NULL,
+DepartmentName VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE DimRoom(
+RoomKey INT PRIMARY KEY AUTO_INCREMENT,
+RoomID VARCHAR(10) NOT NULL,
+Purpose VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE DimDoctor(
+DoctorKey INT PRIMARY KEY AUTO_INCREMENT,
+DoctorID VARCHAR(10) NOT NULL,
+DoctorName VARCHAR(50) NOT NULL,
+DepartmentID VARCHAR(10) NOT NULL,
+FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+);
+
+CREATE TABLE DimPatient(
+PatientKey INT PRIMARY KEY AUTO_INCREMENT,
+PatientID VARCHAR(10) NOT NULL,
+PatientName VARCHAR(50) NOT NULL,
+DOB DATE NOT NULL,
+Sex CHAR(1) NOT NULL,
+Address VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE DimDate(
+DateKey INT PRIMARY KEY AUTO_INCREMENT,
+FullDate DATE,
+Year INT,
+Quarter INT,
+Month INT,
+Day INT,
+DayName VARCHAR(10)
+);
+
+CREATE TABLE FactAppointment(
+AppointmentKey INT PRIMARY KEY AUTO_INCREMENT,
+PatientKey INT,
+DoctorKey INT,
+RoomKey INT,
+DepartmentKey INT,
+DateKey INT,
+ScheduledStartTime DATETIME NOT NULL,
+ScheduledEndTime TIME NOT NULL,
+ArrivalTime TIME,
+StartTime TIME,
+FinishTime TIME,
+Weight FLOAT,
+Temperature FLOAT,
+FOREIGN KEY (PatientKey) REFERENCES DimPatient(PatientKey),
+FOREIGN KEY (DoctorKey) REFERENCES DimDoctor(DoctorKey),
+FOREIGN KEY (RoomKey) REFERENCES DimRoom(RoomKey),
+FOREIGN KEY (DepartmentKey) REFERENCES DimDepartment(DepartmentKey),
+FOREIGN KEY (DateKey) REFERENCES DimDate(DateKey)
+);
