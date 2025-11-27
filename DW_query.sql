@@ -1,5 +1,3 @@
--- IT8704 Data Management Systems CA2
--- JAYE LIN JIAQI (9707406Q)
 -- Analytical queries to extract insights from the available data in the data warehouse
 
 USE CA2DW9707406;
