@@ -1,5 +1,3 @@
--- IT8704 Data Management Systems CA2
--- JAYE LIN JIAQI (9707406Q)
 -- SQL INSERT INTO statements to populate DW (CA2DW9707406) tables from OLTP (CA29707406)
 
 USE CA2DW9707406;
