@@ -1,5 +1,3 @@
--- IT8704 Data Management Systems CA2
--- JAYE LIN JIAQI (9707406Q)
 -- SQL CREATE TABLE statements to create DW tables
 
 CREATE DATABASE CA2DW9707406;
